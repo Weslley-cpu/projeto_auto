@@ -1,6 +1,6 @@
 import pandas as pd
 import win32com.client as win32
-email = 'lVc8o@example.com'
+email = 'email@example.com'
 assunto = 'Resultados de vendas'
 try:
     tabela_teste = pd.read_excel('Vendas.xlsx')
@@ -15,18 +15,17 @@ try:
     mail.To = email
     mail.Subject = assunto
     mail.HTMLbody = f'''
-    <p>Prezados, segue abaixo o relatório de vendas</p>
-    <p>Faturamento por loja.</p>
+    <p>Prezados, segue abaixo o relatório de vendas,</p>
+    <p>Faturamento por loja:</p>
     {faturamento.to_html(formatters={'Valor Final': 'R${:,.2f}'.format})}
     <p>Quantidade de vendas por loja:</p>
     {quantidade.to_html()}
     <p>Ticket Médio:</p>
     {tkm.to_html(formatters={'TKM': 'R${:,.2f}'.format})}
 
-    <p>Att.,</p>
+    <p>Att,</p>
     <p>Weslley</p>
     '''
-    mail.Display() #Display() caso queira montar o e-mail mas não enviar diretamente (ideal para consultar se está correto), caso queira enviar, trocar por Send().
 except FileNotFoundError:
     print('Arquivo não encontrado')
 except KeyError:
