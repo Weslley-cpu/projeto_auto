@@ -26,6 +26,7 @@ try:
     <p>Att,</p>
     <p>Weslley</p>
     '''
+    mail.Send() #Display() caso queira montar o e-mail mas não enviar diretamente (ideal para consultar se está correto), caso queira enviar, trocar por Send().
 except FileNotFoundError:
     print('Arquivo não encontrado')
 except KeyError:
